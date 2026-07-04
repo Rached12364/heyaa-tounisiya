@@ -1,0 +1,147 @@
+:host {
+  display: block;
+  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+.site-header {
+  position: relative;
+  z-index: 1100;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 32px;
+  background: #1b3a5c;
+  color: #fff;
+  font-size: 0.9rem;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1100;
+}
+
+.top-bar__left,
+.top-bar__right,
+.top-bar__center {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-bar__left {
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.top-bar__center {
+  justify-content: center;
+}
+
+.top-bar__right {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.login-btn {
+  border: 1px solid #fff;
+  border-radius: 999px;
+  padding: 8px 16px;
+  background: transparent;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lang-switcher,
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-switcher a,
+.social-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.main-nav {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 32px;
+  background: transparent;
+  transition: background 0.25s ease;
+}
+
+:host(.scrolled) .main-nav {
+  background: #1b3a5c;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.brand__text strong {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.brand__text small {
+  color: #f6d36a;
+  font-size: 0.8rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.nav-flag {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+@media (max-width: 1100px) {
+  .top-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 14px 16px;
+  }
+}

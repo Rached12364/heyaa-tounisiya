@@ -1,0 +1,82 @@
+<section class="hero-section">
+  <div class="hero-slide" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlide">
+    <img [src]="slide.image" [alt]="slide.alt" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="eyebrow">Services techniques certifiés</p>
+      <h1>Des techniciens fiables à votre service</h1>
+      <p class="hero-subtitle">Trouvez rapidement des experts qualifiés pour l'électricité, les panneaux solaires et la fibre optique.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">Trouver un Technicien</a>
+        <a class="btn btn-secondary" href="#">Inscription Technicien</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="hero-arrow hero-arrow--left" type="button" (click)="prevSlide()">‹</button>
+  <button class="hero-arrow hero-arrow--right" type="button" (click)="nextSlide()">›</button>
+
+  <div class="hero-dots">
+    <button
+      *ngFor="let slide of slides; let i = index"
+      type="button"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Afficher le slide ' + (i + 1)"
+    ></button>
+  </div>
+</section>
+
+<section class="services-section">
+  <h2>Nos Services</h2>
+  <div class="cards-grid">
+    <article class="service-card navy">
+      <div class="service-card__icon">📷</div>
+      <h3>CCTV &amp; Surveillance</h3>
+      <p>Installation et maintenance de caméras IP</p>
+    </article>
+
+    <article class="service-card teal">
+      <div class="service-card__icon">🌐</div>
+      <h3>Réseaux Informatiques</h3>
+      <p>Câblage structuré et fibre optique</p>
+    </article>
+
+    <article class="service-card gold">
+      <div class="service-card__icon">⚡</div>
+      <h3>Électricité</h3>
+      <p>Électricité bâtiment et industrielle</p>
+    </article>
+
+    <article class="service-card red">
+      <div class="service-card__icon">🔥</div>
+      <h3>Détection Incendie</h3>
+      <p>Systèmes anti-incendie certifiés</p>
+    </article>
+
+    <article class="service-card navy">
+      <div class="service-card__icon">🏠</div>
+      <h3>Smart Home</h3>
+      <p>Domotique et automatisation</p>
+    </article>
+  </div>
+</section>
+
+<section class="stats-section">
+  <div class="stat-block">
+    <div class="stat-block__value">500+</div>
+    <div class="stat-block__label">Techniciens certifiés</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-block__value">150+</div>
+    <div class="stat-block__label">Entreprises partenaires</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-block__value">24</div>
+    <div class="stat-block__label">Gouvernorats couverts</div>
+  </div>
+  <div class="stat-block">
+    <div class="stat-block__value">1000+</div>
+    <div class="stat-block__label">Interventions réalisées</div>
+  </div>
+</section>

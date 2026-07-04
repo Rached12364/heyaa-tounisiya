@@ -1,0 +1,13 @@
+<main class="app-shell">
+  <app-navbar></app-navbar>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Services techniques en Tunisie</p>
+      <h1>Des techniciens fiables, près de chez vous.</h1>
+      <p class="hero-text">
+        Trouvez rapidement des experts pour l'entretien, la réparation et l'assistance professionnelle.
+      </p>
+    </div>
+  </section>
+</main>
