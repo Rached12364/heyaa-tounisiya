@@ -1,0 +1,34 @@
+﻿<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb">Accueil > Techniciens</p>
+    <h1>Nos Techniciens</h1>
+    <p>Trouvez un technicien certifie pres de chez vous</p>
+  </div>
+</div>
+<div class="container">
+  <div class="filter-bar">
+    <input type="text" [(ngModel)]="searchTerm"
+      placeholder="Rechercher un technicien...">
+    <select [(ngModel)]="selectedGouvernorat">
+      <option value="">Tous les gouvernorats</option>
+      <option *ngFor="let g of gouvernorats" [value]="g">{{g}}</option>
+    </select>
+    <select [(ngModel)]="selectedSpecialite">
+      <option value="">Toutes les specialites</option>
+      <option *ngFor="let s of specialites" [value]="s">{{s}}</option>
+    </select>
+    <button class="btn-search">Rechercher</button>
+  </div>
+  <div class="techniciens-grid">
+    <div class="technicien-card" *ngFor="let t of techniciens">
+      <div class="avatar" [style.background]="t.couleur">{{t.initiales}}</div>
+      <h3>{{t.nom}}</h3>
+      <span class="badge" [style.background]="t.couleur">{{t.specialite}}</span>
+      <p>📍 {{t.gouvernorat}}</p>
+      <p>⭐ {{t.experience}} ans experience</p>
+      <p *ngIf="t.verifie" class="verifie">✅ Technicien verifie</p>
+      <p *ngIf="!t.verifie" class="non-verifie">⏳ En cours de verification</p>
+      <button class="btn-profil">Voir le profil</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+﻿.page-header {
+  background: #1B3A5C;
+  color: white;
+  padding: 100px 0 40px;
+  text-align: center;
+  h1 { font-size: 36px; margin: 10px 0; }
+  p { opacity: 0.8; }
+  .breadcrumb { font-size: 13px; color: #C9A227; }
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  padding: 25px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  margin: 30px 0;
+  flex-wrap: wrap;
+  input, select {
+    flex: 1;
+    min-width: 180px;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    &:focus { border-color: #1B3A5C; }
+  }
+  .btn-search {
+    background: #1B3A5C;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    &:hover { background: #C9A227; }
+  }
+}
+.techniciens-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin-bottom: 60px;
+}
+.technicien-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 auto 15px;
+  }
+  h3 { color: #1B3A5C; margin-bottom: 10px; }
+  .badge {
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  p { color: #666; font-size: 14px; margin: 5px 0; }
+  .verifie { color: #0D9488; font-weight: bold; }
+  .non-verifie { color: #999; }
+  .btn-profil {
+    margin-top: 15px;
+    border: 2px solid #1B3A5C;
+    color: #1B3A5C;
+    background: transparent;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    &:hover { background: #1B3A5C; color: white; }
+  }
+}

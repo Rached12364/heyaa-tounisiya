@@ -1,0 +1,42 @@
+﻿<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb">Accueil &gt; Entreprises</p>
+    <h1>Nos Entreprises Partenaires</h1>
+    <p>{{entreprises.length}} entreprises dans le secteur securite et reseaux en Tunisie</p>
+  </div>
+</div>
+<div class="container">
+  <div class="filter-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher une entreprise...">
+    <select [(ngModel)]="selectedGouvernorat">
+      <option value="">Tous les gouvernorats</option>
+      <option *ngFor="let g of gouvernorats" [value]="g">{{g}}</option>
+    </select>
+    <select [(ngModel)]="selectedDomaine">
+      <option value="">Tous les domaines</option>
+      <option *ngFor="let d of domaines" [value]="d">{{d}}</option>
+    </select>
+    <button class="btn-search" (click)="rechercher()">Rechercher</button>
+  </div>
+  <p class="results-count">{{filteredEntreprises.length}} entreprises trouvees</p>
+  <div class="entreprises-grid">
+    <div class="entreprise-card" *ngFor="let e of pagedEntreprises">
+      <div class="avatar" [style.background]="e.couleur">{{e.initiales}}</div>
+      <h3>{{e.nom}}</h3>
+      <p class="location">📍 {{e.ville}}, {{e.gouvernorat}}</p>
+      <div class="services-tags">
+        <span class="tag" *ngFor="let s of e.services">{{s}}</span>
+      </div>
+      <div class="contact-info">
+        <p *ngIf="e.email">✉️ {{e.email}}</p>
+        <p *ngIf="e.tel">📞 {{e.tel}}</p>
+        <p *ngIf="e.site">🌐 {{e.site}}</p>
+      </div>
+      <button class="btn-profil" (click)="voirProfil(e)">Voir le profil</button>
+    </div>
+  </div>
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button *ngFor="let p of pages" [class.active]="p === currentPage" (click)="goToPage(p)">{{p}}</button>
+  </div>
+</div>
+

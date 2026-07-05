@@ -1,5 +1,6 @@
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -233,6 +234,76 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
       line-height: 1.5;
     }
 
+    .site-footer {
+      background: #1b3a5c;
+      color: #fff;
+      padding: 60px 24px 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .footer-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col strong,
+    .footer-col h4 {
+      color: #fff;
+      margin: 0 0 8px;
+      font-weight: 800;
+    }
+
+    .footer-col h4 {
+      color: #c9a227;
+      font-size: 1rem;
+    }
+
+    .footer-col p,
+    .footer-col a {
+      color: #f5f7fb;
+      text-decoration: none;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .footer-col a:hover {
+      color: #c9a227;
+    }
+
+    .footer-col--brand p {
+      color: #b7c0cc;
+      font-size: 0.9rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .footer-socials a {
+      color: #c9a227;
+      font-weight: 700;
+    }
+
+    .footer-bottom {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      text-align: center;
+      color: #cfd8e3;
+      font-size: 13px;
+    }
+
     @media (max-width: 1100px) {
       .cards-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -245,15 +316,17 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
     @media (max-width: 760px) {
       .cards-grid,
-      .stats-section {
+      .stats-section,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
     }
   `
 })
 export class HomeComponent implements OnInit, OnDestroy {
+  private autoSlide: any;
   public readonly slides: Array<{ image: string; alt: string }> = [
-    { image: 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600', alt: 'Travail électrique et technicien' },
+    { image: 'hero.jpg', alt: 'Travail électrique et technicien' },
     { image: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600', alt: 'Panneaux solaires' },
     { image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600', alt: 'Installation fibre optique' }
   ];
@@ -262,10 +335,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   private autoplayTimer: number | null = null;
 
   ngOnInit(): void {
+    this.autoSlide = setInterval(() => this.nextSlide(), 5000);
     this.startAutoPlay();
   }
 
   ngOnDestroy(): void {
+    clearInterval(this.autoSlide);
     if (this.autoplayTimer !== null && typeof window !== 'undefined') {
       window.clearInterval(this.autoplayTimer);
     }
@@ -300,3 +375,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.startAutoPlay();
   }
 }
+
+
+
+
