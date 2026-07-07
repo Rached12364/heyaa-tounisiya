@@ -1,0 +1,114 @@
+$navy: #1B3A5C;
+$gold: #C9A227;
+$teal: #0D9488;
+.auth-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F7F8FA;
+  padding: 100px 20px 40px;
+}
+.auth-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  padding: 40px;
+  width: 100%;
+  max-width: 560px;
+}
+.auth-header {
+  text-align: center;
+  margin-bottom: 28px;
+  .tag { color: $gold; font-weight: 700; letter-spacing: 1.5px; font-size: 0.8rem; }
+  h1 { color: $navy; font-size: 1.6rem; margin: 8px 0; }
+  p { color: #6b7280; font-size: 0.9rem; }
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+.form-group {
+  margin-bottom: 18px;
+  label {
+    display: block;
+    color: $navy;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+  }
+  input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease;
+    &:focus { outline: none; border-color: $teal; }
+    &.invalid { border-color: #dc2626; }
+  }
+  .error {
+    display: block;
+    color: #dc2626;
+    font-size: 0.8rem;
+    margin-top: 4px;
+  }
+}
+.role-toggle {
+  display: flex;
+  gap: 12px;
+}
+.role-option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #6b7280;
+  transition: all 0.2s ease;
+  input { display: none; }
+  &.selected {
+    border-color: $teal;
+    background: rgba($teal, 0.08);
+    color: $teal;
+  }
+}
+.server-error {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: $navy;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  &:hover:not(:disabled) { background: $teal; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+.auth-switch {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #6b7280;
+  a { color: $gold; font-weight: 700; text-decoration: none; }
+}

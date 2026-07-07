@@ -1,147 +1,202 @@
 :host {
   display: block;
-  font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
 }
-
 .site-header {
   position: relative;
   z-index: 1100;
 }
-
 .top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 8px 32px;
-  background: #1b3a5c;
+  padding: 9px 32px;
+  background: #0B2038;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 1100;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
-
+:host(.scrolled) .top-bar {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
 .top-bar__left,
 .top-bar__right,
 .top-bar__center {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
-
 .top-bar__left {
   flex: 1;
   flex-wrap: wrap;
+  color: rgba(255, 255, 255, 0.85);
 }
-
 .top-bar__center {
   justify-content: center;
 }
-
 .top-bar__right {
   justify-content: flex-end;
   flex-wrap: wrap;
 }
-
 .login-btn {
-  border: 1px solid #fff;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
-  padding: 8px 16px;
+  padding: 7px 18px;
   background: transparent;
   color: #fff;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 0.82rem;
   cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
-
+.login-btn:hover {
+  border-color: #C9A227;
+  background: rgba(201, 162, 39, 0.12);
+}
 .lang-switcher,
 .social-links {
   display: flex;
   align-items: center;
   gap: 10px;
 }
-
 .lang-switcher a,
 .social-links a {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   font-weight: 600;
+  transition: color 0.2s ease;
 }
-
+.lang-switcher a:hover,
+.social-links a:hover {
+  color: #C9A227;
+}
 .main-nav {
   position: fixed;
-  top: 40px;
+  top: 38px;
   left: 0;
   right: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding: 18px 32px;
-  background: transparent;
-  transition: background 0.25s ease;
+  gap: 24px;
+  padding: 22px 32px;
+  background: linear-gradient(180deg, rgba(11, 32, 56, 0.55) 0%, rgba(11, 32, 56, 0) 100%);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 :host(.scrolled) .main-nav {
-  background: #1b3a5c;
+  top: 0;
+  padding: 12px 32px;
+  background: rgba(11, 32, 56, 0.94);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
-
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   color: #fff;
   text-decoration: none;
 }
-
+.brand img {
+  height: 70px;
+  width: 70px;
+  object-fit: contain;
+  transition: height 0.3s ease, width 0.3s ease;
+}
+:host(.scrolled) .brand img {
+  height: 46px;
+  width: 46px;
+}
 .brand__text {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
 }
-
 .brand__text strong {
-  color: #fff;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1rem;
-  font-weight: 800;
+  font-weight: 700;
 }
-
 .brand__text small {
-  color: #f6d36a;
-  font-size: 0.8rem;
+  color: #F0C75E;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: opacity 0.2s ease, height 0.2s ease;
 }
-
+:host(.scrolled) .brand__text small {
+  display: none;
+}
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 4px;
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .nav-links a {
-  color: #fff;
+  position: relative;
+  color: rgba(255, 255, 255, 0.88);
   text-decoration: none;
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  transition: color 0.2s ease;
 }
-
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  background: #C9A227;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+.nav-links a:hover {
+  color: #fff;
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+}
+.nav-links a.active {
+  color: #F0C75E;
+}
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
 .nav-flag {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1;
 }
-
+@media (max-width: 1250px) {
+  .nav-links a {
+    font-size: 12.5px;
+    padding: 8px 8px;
+  }
+}
 @media (max-width: 1100px) {
   .top-bar {
     flex-wrap: wrap;
     justify-content: center;
     padding: 10px 16px;
   }
-
   .main-nav {
     flex-wrap: wrap;
     justify-content: center;
     padding: 14px 16px;
+    top: 76px;
+  }
+  :host(.scrolled) .main-nav {
+    top: 0;
   }
 }

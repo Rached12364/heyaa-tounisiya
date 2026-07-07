@@ -1,0 +1,32 @@
+﻿{
+  "nav": {
+    "home": "الرئيسية",
+    "heyaa": "الهيئة",
+    "techniciens": "الفنيون",
+    "entreprises": "الشركات",
+    "services": "الخدمات",
+    "actualites": "الأخبار",
+    "contact": "اتصل بنا",
+    "login": "تسجيل الدخول"
+  },
+  "home": {
+    "eyebrow": "خدمات فنية معتمدة",
+    "title": "فنيون موثوقون في خدمتكم",
+    "subtitle": "اعثر بسرعة على خبراء مؤهلين في الكهرباء والألواح الشمسية والألياف البصرية.",
+    "cta_find": "ابحث عن فني",
+    "cta_register": "تسجيل كفني",
+    "stats": {
+      "technicians": "فنيون",
+      "companies": "شركات",
+      "governorates": "ولايات",
+      "interventions": "تدخلات"
+    }
+  },
+  "common": {
+    "search": "بحث",
+    "governorate": "الولاية",
+    "specialty": "الاختصاص",
+    "verified": "موثّق",
+    "pending": "قيد المراجعة"
+  }
+}

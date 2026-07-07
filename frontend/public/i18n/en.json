@@ -1,0 +1,32 @@
+﻿{
+  "nav": {
+    "home": "Home",
+    "heyaa": "The Heyaa",
+    "techniciens": "Technicians",
+    "entreprises": "Companies",
+    "services": "Services",
+    "actualites": "News",
+    "contact": "Contact",
+    "login": "Login"
+  },
+  "home": {
+    "eyebrow": "CERTIFIED TECHNICAL SERVICES",
+    "title": "Reliable technicians at your service",
+    "subtitle": "Quickly find qualified experts for electricity, solar panels and fiber optics.",
+    "cta_find": "Find a Technician",
+    "cta_register": "Register as Technician",
+    "stats": {
+      "technicians": "Technicians",
+      "companies": "Companies",
+      "governorates": "Governorates",
+      "interventions": "Interventions"
+    }
+  },
+  "common": {
+    "search": "Search",
+    "governorate": "Governorate",
+    "specialty": "Specialty",
+    "verified": "Verified",
+    "pending": "Pending"
+  }
+}

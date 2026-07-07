@@ -1,0 +1,32 @@
+﻿{
+  "nav": {
+    "home": "Accueil",
+    "heyaa": "L'Heyaa",
+    "techniciens": "Techniciens",
+    "entreprises": "Entreprises",
+    "services": "Services",
+    "actualites": "Actualites",
+    "contact": "Contact",
+    "login": "Connexion"
+  },
+  "home": {
+    "eyebrow": "SERVICES TECHNIQUES CERTIFIES",
+    "title": "Des techniciens fiables a votre service",
+    "subtitle": "Trouvez rapidement des experts qualifies pour l'electricite, les panneaux solaires et la fibre optique.",
+    "cta_find": "Trouver un Technicien",
+    "cta_register": "Inscription Technicien",
+    "stats": {
+      "technicians": "Techniciens",
+      "companies": "Entreprises",
+      "governorates": "Gouvernorats",
+      "interventions": "Interventions"
+    }
+  },
+  "common": {
+    "search": "Rechercher",
+    "governorate": "Gouvernorat",
+    "specialty": "Specialite",
+    "verified": "Verifie",
+    "pending": "En cours"
+  }
+}

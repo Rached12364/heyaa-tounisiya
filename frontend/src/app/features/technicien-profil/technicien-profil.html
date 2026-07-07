@@ -1,0 +1,360 @@
+<section class="wizard-section">
+  <div class="wizard-container">
+
+    <div class="wizard-header">
+      <span class="tag">PROFIL TECHNICIEN</span>
+      <h1>Complétez votre profil</h1>
+      <p>Ces informations permettent aux entreprises de vous trouver et de vous contacter.</p>
+    </div>
+
+    <!-- Barre de progression -->
+    <div class="progress-bar">
+      <div class="progress-fill" [style.width.%]="progressPercent()"></div>
+    </div>
+
+    <!-- Étapes (indicateurs cliquables) -->
+    <div class="steps-indicator">
+      <button
+        type="button"
+        *ngFor="let step of steps; let i = index"
+        class="step-dot"
+        [class.active]="i === currentStep()"
+        [class.completed]="i < currentStep()"
+        (click)="goToStep(i)"
+      >
+        <span class="step-icon">{{ step.icon }}</span>
+        <span class="step-label">{{ step.label }}</span>
+      </button>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="wizard-form">
+
+      <!-- ============ ÉTAPE 0 : PERSONNEL ============ -->
+      <div class="step-panel" *ngIf="currentStep() === 0">
+        <h2>👤 Informations personnelles</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>CIN *</label>
+            <input type="text" formControlName="cin" placeholder="12345678" maxlength="8"
+                   [class.invalid]="f['cin'].invalid && f['cin'].touched" />
+            <span class="error" *ngIf="f['cin'].invalid && f['cin'].touched">CIN invalide (8 chiffres).</span>
+          </div>
+          <div class="form-group">
+            <label>Date de naissance *</label>
+            <input type="date" formControlName="dateNaissance"
+                   [class.invalid]="f['dateNaissance'].invalid && f['dateNaissance'].touched" />
+            <span class="error" *ngIf="f['dateNaissance'].invalid && f['dateNaissance'].touched">Obligatoire.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Sexe *</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" formControlName="sexe" value="HOMME" /> Homme
+            </label>
+            <label class="radio-option">
+              <input type="radio" formControlName="sexe" value="FEMME" /> Femme
+            </label>
+          </div>
+          <span class="error" *ngIf="f['sexe'].invalid && f['sexe'].touched">Obligatoire.</span>
+        </div>
+
+        <div class="form-group">
+          <label>Adresse complète *</label>
+          <input type="text" formControlName="adresse" placeholder="Rue, numéro, quartier..."
+                 [class.invalid]="f['adresse'].invalid && f['adresse'].touched" />
+          <span class="error" *ngIf="f['adresse'].invalid && f['adresse'].touched">Obligatoire.</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ville</label>
+            <input type="text" formControlName="ville" placeholder="Nabeul" />
+          </div>
+          <div class="form-group">
+            <label>Gouvernorat *</label>
+            <select formControlName="gouvernorat" [class.invalid]="f['gouvernorat'].invalid && f['gouvernorat'].touched">
+              <option value="">-- Sélectionner --</option>
+              <option *ngFor="let g of gouvernorats" [value]="g">{{ g }}</option>
+            </select>
+            <span class="error" *ngIf="f['gouvernorat'].invalid && f['gouvernorat'].touched">Obligatoire.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Téléphone secondaire</label>
+          <input type="tel" formControlName="telephoneSecondaire" placeholder="54555277" />
+        </div>
+      </div>
+
+      <!-- ============ ÉTAPE 1 : PROFESSIONNEL ============ -->
+      <div class="step-panel" *ngIf="currentStep() === 1">
+        <h2>💼 Informations professionnelles</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Matricule technicien (interne)</label>
+            <input type="text" formControlName="matricule" placeholder="Attribué par la Heyaa" />
+          </div>
+          <div class="form-group">
+            <label>Métier *</label>
+            <select formControlName="metier" [class.invalid]="f['metier'].invalid && f['metier'].touched">
+              <option value="">-- Sélectionner --</option>
+              <option *ngFor="let m of metiers" [value]="m.value">{{ m.label }}</option>
+            </select>
+            <span class="error" *ngIf="f['metier'].invalid && f['metier'].touched">Obligatoire.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Spécialité</label>
+          <input type="text" formControlName="specialite" placeholder="Ex: Installation panneaux solaires" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Niveau d'études</label>
+            <select formControlName="niveauEtudes">
+              <option value="">-- Sélectionner --</option>
+              <option *ngFor="let n of niveauxEtudes" [value]="n.value">{{ n.label }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Diplôme</label>
+            <input type="text" formControlName="diplome" placeholder="Ex: BTS Électrotechnique" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Établissement</label>
+            <input type="text" formControlName="etablissement" placeholder="Nom de l'école/université" />
+          </div>
+          <div class="form-group">
+            <label>Année d'obtention</label>
+            <input type="number" formControlName="anneeObtention" placeholder="2020" min="1970" max="2026" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Années d'expérience</label>
+            <input type="number" formControlName="anneesExperience" placeholder="5" min="0"
+                   [class.invalid]="f['anneesExperience'].invalid && f['anneesExperience'].touched" />
+          </div>
+          <div class="form-group">
+            <label>Entreprise actuelle</label>
+            <input type="text" formControlName="entrepriseActuelle" placeholder="Si applicable" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Statut</label>
+          <div class="role-toggle">
+            <label *ngFor="let s of statutsProfessionnels" class="role-option"
+                   [class.selected]="f['statutProfessionnel'].value === s.value">
+              <input type="radio" formControlName="statutProfessionnel" [value]="s.value" />
+              {{ s.label }}
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ÉTAPE 2 : COMPÉTENCES ============ -->
+      <div class="step-panel" *ngIf="currentStep() === 2">
+        <h2>🛠️ Compétences techniques</h2>
+
+        <div class="checkbox-grid">
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceCctv" /> Installation CCTV</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceControleAcces" /> Contrôle d'accès</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceReseaux" /> Réseaux informatiques</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceFibreOptique" /> Fibre optique</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceElectricite" /> Électricité</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceDomotique" /> Domotique</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceMaintenanceInformatique" /> Maintenance informatique</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceAlarmesIntrusion" /> Alarmes intrusion</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="competenceDetectionIncendie" /> Détection incendie</label>
+        </div>
+
+        <div class="form-group">
+          <label>Autres compétences</label>
+          <textarea formControlName="autresCompetences" rows="3" placeholder="Décrivez toute autre compétence pertinente..."></textarea>
+        </div>
+
+        <div class="cctv-toggle-box">
+          <label class="toggle-switch-label">
+            <input type="checkbox" formControlName="travailleSecuriteElectronique" />
+            <span>Je travaille (ou postule) pour une société de sécurité électronique (caméras de surveillance)</span>
+          </label>
+        </div>
+
+        <div class="cctv-extra" *ngIf="isCctvWorker">
+          <h3>📷 Sécurité électronique — précisions</h3>
+
+          <div class="checkbox-grid">
+            <label class="checkbox-card"><input type="checkbox" formControlName="experienceCamerasIp" /> Expérience caméras IP</label>
+            <label class="checkbox-card"><input type="checkbox" formControlName="experienceNvrDvr" /> Expérience NVR/DVR</label>
+            <label class="checkbox-card"><input type="checkbox" formControlName="configurationReseau" /> Configuration réseau</label>
+            <label class="checkbox-card"><input type="checkbox" formControlName="pointageBiometrique" /> Pointage biométrique</label>
+            <label class="checkbox-card"><input type="checkbox" formControlName="interphonieIp" /> Interphonie IP</label>
+            <label class="checkbox-card"><input type="checkbox" formControlName="soudureFibreOptique" /> Soudure fibre optique</label>
+          </div>
+
+          <div class="form-group">
+            <label>Marques maîtrisées</label>
+            <input type="text" formControlName="marquesMaitrisees" placeholder="Hikvision, Dahua, Uniview..." />
+          </div>
+
+          <div class="form-group">
+            <label>Certifications</label>
+            <input type="text" formControlName="certifications" placeholder="CCNA, HCIA, Hikvision, Dahua..." />
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ÉTAPE 3 : PERMIS & MOBILITÉ ============ -->
+      <div class="step-panel" *ngIf="currentStep() === 3">
+        <h2>🚗 Permis et mobilité</h2>
+
+        <div class="cctv-toggle-box">
+          <label class="toggle-switch-label">
+            <input type="checkbox" formControlName="permisConduire" />
+            <span>Je possède un permis de conduire</span>
+          </label>
+        </div>
+
+        <div class="form-group" *ngIf="hasPermis">
+          <label>Catégorie de permis</label>
+          <div class="role-toggle">
+            <label *ngFor="let c of categoriesPermis" class="role-option"
+                   [class.selected]="f['categoriePermis'].value === c.value">
+              <input type="radio" formControlName="categoriePermis" [value]="c.value" />
+              {{ c.label }}
+            </label>
+          </div>
+        </div>
+
+        <div class="checkbox-grid two-col">
+          <label class="checkbox-card"><input type="checkbox" formControlName="vehiculePersonnel" /> Véhicule personnel</label>
+          <label class="checkbox-card"><input type="checkbox" formControlName="disponibleDeplacement" /> Disponible pour déplacement</label>
+        </div>
+
+        <div class="form-group">
+          <label>Zones d'intervention</label>
+          <textarea formControlName="zonesIntervention" rows="3" placeholder="Ex: Nabeul, Hammamet, Sousse..."></textarea>
+        </div>
+      </div>
+
+      <!-- ============ ÉTAPE 4 : DOCUMENTS ============ -->
+      <div class="step-panel" *ngIf="currentStep() === 4">
+        <h2>📄 Documents</h2>
+        <p class="step-hint">Formats acceptés : PDF, JPG, PNG. Taille max 10 Mo par fichier.</p>
+
+        <div class="documents-grid">
+          <div class="document-upload">
+            <label>Copie CIN</label>
+            <input type="file" (change)="onFileSelected($event, 'cinDocument')" accept=".pdf,.jpg,.jpeg,.png" />
+            <span class="file-name" *ngIf="fileNames()['cinDocument']">📎 {{ fileNames()['cinDocument'] }}</span>
+          </div>
+
+          <div class="document-upload">
+            <label>CV</label>
+            <input type="file" (change)="onFileSelected($event, 'cvDocument')" accept=".pdf,.jpg,.jpeg,.png" />
+            <span class="file-name" *ngIf="fileNames()['cvDocument']">📎 {{ fileNames()['cvDocument'] }}</span>
+          </div>
+
+          <div class="document-upload">
+            <label>Diplôme</label>
+            <input type="file" (change)="onFileSelected($event, 'diplomeDocument')" accept=".pdf,.jpg,.jpeg,.png" />
+            <span class="file-name" *ngIf="fileNames()['diplomeDocument']">📎 {{ fileNames()['diplomeDocument'] }}</span>
+          </div>
+
+          <div class="document-upload">
+            <label>Attestation de travail</label>
+            <input type="file" (change)="onFileSelected($event, 'attestationTravail')" accept=".pdf,.jpg,.jpeg,.png" />
+            <span class="file-name" *ngIf="fileNames()['attestationTravail']">📎 {{ fileNames()['attestationTravail'] }}</span>
+          </div>
+
+          <div class="document-upload">
+            <label>Photo d'identité</label>
+            <input type="file" (change)="onFileSelected($event, 'photoIdentite')" accept=".jpg,.jpeg,.png" />
+            <span class="file-name" *ngIf="fileNames()['photoIdentite']">📎 {{ fileNames()['photoIdentite'] }}</span>
+          </div>
+
+          <div class="document-upload">
+            <label>Casier judiciaire (si demandé)</label>
+            <input type="file" (change)="onFileSelected($event, 'casierJudiciaire')" accept=".pdf,.jpg,.jpeg,.png" />
+            <span class="file-name" *ngIf="fileNames()['casierJudiciaire']">📎 {{ fileNames()['casierJudiciaire'] }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ ÉTAPE 5 : FINALISATION ============ -->
+      <div class="step-panel" *ngIf="currentStep() === 5">
+        <h2>✅ Disponibilité et finalisation</h2>
+
+        <div class="cctv-toggle-box">
+          <label class="toggle-switch-label">
+            <input type="checkbox" formControlName="disponibleImmediatement" />
+            <span>Disponible immédiatement</span>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Type de disponibilité</label>
+            <div class="role-toggle">
+              <label *ngFor="let t of typesDisponibilite" class="role-option"
+                     [class.selected]="f['typeDisponibilite'].value === t.value">
+                <input type="radio" formControlName="typeDisponibilite" [value]="t.value" />
+                {{ t.label }}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Salaire souhaité (DT/mois)</label>
+            <input type="number" formControlName="salaireSouhaite" placeholder="1200" min="0" />
+          </div>
+        </div>
+
+        <h3 class="sub-section-title">💳 Coordonnées bancaires (optionnel)</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Banque</label>
+            <input type="text" formControlName="banque" placeholder="Ex: BIAT" />
+          </div>
+          <div class="form-group">
+            <label>RIB</label>
+            <input type="text" formControlName="rib" placeholder="20 chiffres" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Commentaires / Observations</label>
+          <textarea formControlName="commentaires" rows="4" placeholder="Toute information complémentaire..."></textarea>
+        </div>
+      </div>
+
+      <!-- ============ MESSAGES ============ -->
+      <div class="server-error" *ngIf="errorMessage()">{{ errorMessage() }}</div>
+      <div class="server-success" *ngIf="successMessage()">{{ successMessage() }}</div>
+
+      <!-- ============ NAVIGATION ============ -->
+      <div class="wizard-actions">
+        <button type="button" class="btn-secondary" *ngIf="currentStep() > 0" (click)="previousStep()">
+          ← Précédent
+        </button>
+
+        <button type="button" class="btn-primary" *ngIf="!isLastStep" (click)="nextStep()">
+          Suivant →
+        </button>
+
+        <button type="submit" class="btn-submit" *ngIf="isLastStep" [disabled]="loading()">
+          {{ loading() ? "Enregistrement..." : "Enregistrer mon profil" }}
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

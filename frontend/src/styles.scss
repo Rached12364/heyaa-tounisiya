@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', Roboto, Arial, sans-serif;
+  color: #1B2A3C;
+}
+h1, h2, h3, h4 {
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+}
+// ===== Support RTL =====
+body.rtl {
+  direction: rtl;
+  text-align: right;
+  .nav-links, .top-bar__left, .top-bar__right, .social-links, .lang-switcher {
+    flex-direction: row-reverse;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

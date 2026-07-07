@@ -1,0 +1,166 @@
+<!-- ===================== HERO ===================== -->
+<section class="heyaa-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">DEPUIS 2018</span>
+    <h1>L'Heyaa Tounisiya</h1>
+    <p>
+      La Heyaa Tunisienne des Techniciens en Électricité, Énergie Renouvelable
+      et Activités Annexes — une association au service de la profession.
+    </p>
+  </div>
+</section>
+
+<!-- ===================== MISSION / VISION ===================== -->
+<section class="section mission-section">
+  <div class="container two-col">
+    <div class="col">
+      <span class="tag">NOTRE MISSION</span>
+      <h2>Pourquoi la Heyaa existe</h2>
+      <p>{{ mission }}</p>
+    </div>
+    <div class="col">
+      <span class="tag">NOTRE VISION</span>
+      <h2>Où nous allons</h2>
+      <p>{{ vision }}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== STATS ===================== -->
+<section class="section stats-section">
+  <div class="container stats-grid">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-value">{{ stat.value }}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== HISTOIRE / TIMELINE ===================== -->
+<section class="section history-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">NOTRE HISTOIRE</span>
+      <h2>Une association en constante évolution</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item" *ngFor="let item of timeline">
+        <div class="timeline-year">{{ item.year }}</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VALEURS ===================== -->
+<section class="section values-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">NOS VALEURS</span>
+      <h2>Ce qui guide nos actions</h2>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card" *ngFor="let value of valeurs">
+        <div class="value-icon">{{ value.icon }}</div>
+        <h3>{{ value.title }}</h3>
+        <p>{{ value.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OBJECTIFS STATUTAIRES ===================== -->
+<section class="section objectifs-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">OBJECTIFS STATUTAIRES</span>
+      <h2>Ce que nous poursuivons</h2>
+    </div>
+
+    <ul class="objectifs-list">
+      <li *ngFor="let obj of objectifs; let i = index">
+        <span class="objectif-number">{{ i + 1 }}</span>
+        <span class="objectif-text">{{ obj }}</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== BUREAU EXÉCUTIF ===================== -->
+<section class="section bureau-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">BUREAU EXÉCUTIF</span>
+      <h2>L'équipe qui porte la Heyaa</h2>
+    </div>
+
+    <div class="bureau-grid">
+      <div class="bureau-card" *ngFor="let member of bureau">
+        <div class="bureau-avatar" [style.background]="member.color">
+          {{ member.initials }}
+        </div>
+        <h3>{{ member.name }}</h3>
+        <p>{{ member.role }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEXTES JURIDIQUES ===================== -->
+<section class="section legal-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">TEXTES JURIDIQUES</span>
+      <h2>Statuts et documents officiels</h2>
+    </div>
+
+    <div class="legal-grid">
+      <div class="legal-card" *ngFor="let doc of documentsLegaux">
+        <div class="legal-icon">📄</div>
+        <div class="legal-info">
+          <h3>{{ doc.title }}</h3>
+          <p>{{ doc.description }}</p>
+          <span class="legal-date">Publié en {{ doc.date }}</span>
+        </div>
+        <button class="btn-download" (click)="downloadDocument(doc)">
+          Télécharger
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PARTENAIRES ===================== -->
+<section class="section partners-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="tag">NOS PARTENAIRES</span>
+      <h2>Ils accompagnent la Heyaa</h2>
+    </div>
+
+    <div class="partners-grid">
+      <div class="partner-card" *ngFor="let partner of partenaires" [title]="partner.name">
+        <span class="partner-initials">{{ partner.initials }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ADHÉSION ===================== -->
+<section class="section cta-section">
+  <div class="container cta-content">
+    <h2>Rejoignez la Heyaa Tounisiya</h2>
+    <p>Faites partie d'un réseau national de techniciens certifiés et reconnus.</p>
+    <div class="cta-buttons">
+      <a routerLink="/techniciens" class="btn btn-gold">Devenir membre</a>
+      <a routerLink="/contact" class="btn btn-outline">Nous contacter</a>
+    </div>
+  </div>
+</section>

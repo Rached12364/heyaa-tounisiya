@@ -1,0 +1,48 @@
+<section class="auth-section">
+  <div class="auth-card">
+    <div class="auth-header">
+      <span class="tag">CONNEXION</span>
+      <h1>Bon retour parmi nous</h1>
+      <p>Connectez-vous pour accéder à votre espace Heyaa Tounisiya.</p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="exemple@email.com"
+          [class.invalid]="f['email'].invalid && f['email'].touched"
+        />
+        <span class="error" *ngIf="f['email'].invalid && f['email'].touched">
+          <span *ngIf="f['email'].errors?.['required']">L'email est obligatoire.</span>
+          <span *ngIf="f['email'].errors?.['email']">Format d'email invalide.</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="••••••••"
+          [class.invalid]="f['password'].invalid && f['password'].touched"
+        />
+        <span class="error" *ngIf="f['password'].invalid && f['password'].touched">
+          Le mot de passe est obligatoire.
+        </span>
+      </div>
+      <div class="server-error" *ngIf="errorMessage()">
+        {{ errorMessage() }}
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="loading()">
+        {{ loading() ? "Connexion en cours..." : "Se connecter" }}
+      </button>
+      <p class="auth-switch">
+        Pas encore de compte ?
+        <a routerLink="/register">Créer un compte</a>
+      </p>
+    </form>
+  </div>
+</section>

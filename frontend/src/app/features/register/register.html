@@ -1,0 +1,80 @@
+<section class="auth-section">
+  <div class="auth-card">
+    <div class="auth-header">
+      <span class="tag">INSCRIPTION</span>
+      <h1>Rejoignez la Heyaa Tounisiya</h1>
+      <p>Créez votre compte technicien ou entreprise.</p>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="auth-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nom">Nom</label>
+          <input id="nom" type="text" formControlName="nom" placeholder="Ben Salah"
+                 [class.invalid]="f['nom'].invalid && f['nom'].touched" />
+          <span class="error" *ngIf="f['nom'].invalid && f['nom'].touched">Le nom est obligatoire.</span>
+        </div>
+        <div class="form-group">
+          <label for="prenom">Prénom</label>
+          <input id="prenom" type="text" formControlName="prenom" placeholder="Ahmed"
+                 [class.invalid]="f['prenom'].invalid && f['prenom'].touched" />
+          <span class="error" *ngIf="f['prenom'].invalid && f['prenom'].touched">Le prénom est obligatoire.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Adresse email</label>
+        <input id="email" type="email" formControlName="email" placeholder="exemple@email.com"
+               [class.invalid]="f['email'].invalid && f['email'].touched" />
+        <span class="error" *ngIf="f['email'].invalid && f['email'].touched">
+          <span *ngIf="f['email'].errors?.['required']">L'email est obligatoire.</span>
+          <span *ngIf="f['email'].errors?.['email']">Format d'email invalide.</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label for="phone">Numéro de téléphone</label>
+        <input id="phone" type="tel" formControlName="phone" placeholder="54555277"
+               [class.invalid]="f['phone'].invalid && f['phone'].touched" />
+        <span class="error" *ngIf="f['phone'].invalid && f['phone'].touched">
+          <span *ngIf="f['phone'].errors?.['required']">Le téléphone est obligatoire.</span>
+          <span *ngIf="f['phone'].errors?.['pattern']">Numéro tunisien invalide (ex: 54555277).</span>
+        </span>
+      </div>
+      <div class="form-group">
+        <label>Vous êtes</label>
+        <div class="role-toggle">
+          <label *ngFor="let r of roles" class="role-option" [class.selected]="f['role'].value === r.value">
+            <input type="radio" formControlName="role" [value]="r.value" />
+            {{ r.label }}
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Mot de passe</label>
+          <input id="password" type="password" formControlName="password" placeholder="Min. 8 caractères"
+                 [class.invalid]="f['password'].invalid && f['password'].touched" />
+          <span class="error" *ngIf="f['password'].invalid && f['password'].touched">
+            Le mot de passe doit contenir au moins 8 caractères.
+          </span>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirmer</label>
+          <input id="confirmPassword" type="password" formControlName="confirmPassword" placeholder="••••••••"
+                 [class.invalid]="form.errors?.['passwordsMismatch'] && f['confirmPassword'].touched" />
+          <span class="error" *ngIf="form.errors?.['passwordsMismatch'] && f['confirmPassword'].touched">
+            Les mots de passe ne correspondent pas.
+          </span>
+        </div>
+      </div>
+      <div class="server-error" *ngIf="errorMessage()">
+        {{ errorMessage() }}
+      </div>
+      <button type="submit" class="btn-submit" [disabled]="loading()">
+        {{ loading() ? "Création en cours..." : "Créer mon compte" }}
+      </button>
+      <p class="auth-switch">
+        Déjà un compte ?
+        <a routerLink="/login">Se connecter</a>
+      </p>
+    </form>
+  </div>
+</section>

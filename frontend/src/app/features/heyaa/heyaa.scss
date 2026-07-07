@@ -1,0 +1,444 @@
+// ===== Variables (alignées sur le projet) =====
+$navy: #1B3A5C;
+$gold: #C9A227;
+$teal: #0D9488;
+$red: #E70013;
+$light-bg: #F7F8FA;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 80px 0;
+
+  &-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+
+    h2 {
+      font-size: 2.1rem;
+      color: $navy;
+      margin-top: 12px;
+      font-weight: 700;
+    }
+  }
+}
+
+.tag {
+  display: inline-block;
+  color: $gold;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+}
+
+// ===================== HERO =====================
+.heyaa-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, $navy 0%, darken($navy, 12%) 100%);
+  color: #fff;
+  overflow: hidden;
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba($gold, 0.15), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba($teal, 0.2), transparent 45%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    padding: 0 24px;
+
+    .hero-eyebrow {
+      color: $gold;
+      font-weight: 700;
+      letter-spacing: 2px;
+      font-size: 0.85rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 12px 0 16px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: rgba(#fff, 0.85);
+      line-height: 1.6;
+    }
+  }
+}
+
+// ===================== MISSION / VISION =====================
+.mission-section {
+  background: #fff;
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .col {
+    h2 {
+      color: $navy;
+      font-size: 1.6rem;
+      margin: 10px 0 16px;
+    }
+
+    p {
+      color: #4b5563;
+      line-height: 1.7;
+    }
+  }
+}
+
+// ===================== STATS =====================
+.stats-section {
+  background: $navy;
+  padding: 56px 0;
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .stat-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: $gold;
+  }
+
+  .stat-label {
+    color: rgba(#fff, 0.8);
+    margin-top: 6px;
+    font-size: 0.95rem;
+  }
+}
+
+// ===================== HISTOIRE / TIMELINE =====================
+.history-section {
+  background: $light-bg;
+
+  .timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 32px;
+    border-left: 3px solid rgba($teal, 0.3);
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -39.5px;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: $teal;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px $teal;
+  }
+
+  .timeline-year {
+    color: $gold;
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+  }
+
+  .timeline-content {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+
+    h3 {
+      color: $navy;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+
+    p {
+      color: #6b7280;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// ===================== VALEURS =====================
+.values-section {
+  background: #fff;
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+
+    @media (max-width: 992px) { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 640px) { grid-template-columns: repeat(1, 1fr); }
+  }
+
+  .value-card {
+    text-align: center;
+    padding: 28px 16px;
+    border-radius: 12px;
+    background: $light-bg;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .value-icon { font-size: 2rem; margin-bottom: 12px; }
+
+    h3 {
+      color: $navy;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #6b7280;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+  }
+}
+
+// ===================== OBJECTIFS =====================
+.objectifs-section {
+  background: $light-bg;
+
+  .objectifs-list {
+    list-style: none;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: #fff;
+      padding: 18px 20px;
+      border-radius: 10px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+  }
+
+  .objectif-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: $navy;
+    color: $gold;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+  }
+
+  .objectif-text {
+    color: #374151;
+    line-height: 1.6;
+  }
+}
+
+// ===================== BUREAU EXÉCUTIF =====================
+.bureau-section {
+  background: #fff;
+
+  .bureau-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+
+    @media (max-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 480px) { grid-template-columns: 1fr; }
+  }
+
+  .bureau-card {
+    text-align: center;
+    padding: 28px 16px;
+    border-radius: 12px;
+    background: $light-bg;
+    transition: transform 0.2s ease;
+
+    &:hover { transform: translateY(-4px); }
+  }
+
+  .bureau-avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.2rem;
+  }
+
+  h3 { color: $navy; font-size: 1rem; margin-bottom: 4px; }
+  p { color: $teal; font-size: 0.85rem; font-weight: 600; }
+}
+
+// ===================== TEXTES JURIDIQUES =====================
+.legal-section {
+  background: $light-bg;
+
+  .legal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    @media (max-width: 768px) { grid-template-columns: 1fr; }
+  }
+
+  .legal-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+
+  .legal-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+  .legal-info {
+    flex: 1;
+
+    h3 { color: $navy; font-size: 1rem; margin-bottom: 4px; }
+    p { color: #6b7280; font-size: 0.85rem; line-height: 1.5; margin-bottom: 6px; }
+    .legal-date { color: $gold; font-size: 0.8rem; font-weight: 600; }
+  }
+
+  .btn-download {
+    flex-shrink: 0;
+    background: $navy;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+
+    &:hover { background: $teal; }
+  }
+}
+
+// ===================== PARTENAIRES =====================
+.partners-section {
+  background: #fff;
+
+  .partners-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+
+    @media (max-width: 768px) { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 480px) { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .partner-card {
+    aspect-ratio: 1.6;
+    background: $light-bg;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s ease;
+
+    &:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.08); }
+  }
+
+  .partner-initials {
+    color: $navy;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+// ===================== CTA =====================
+.cta-section {
+  background: linear-gradient(135deg, $navy 0%, darken($navy, 10%) 100%);
+  color: #fff;
+  text-align: center;
+
+  .cta-content {
+    h2 { font-size: 2rem; margin-bottom: 12px; }
+    p { color: rgba(#fff, 0.85); margin-bottom: 28px; }
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover { transform: translateY(-2px); }
+}
+
+.btn-gold {
+  background: $gold;
+  color: $navy;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
