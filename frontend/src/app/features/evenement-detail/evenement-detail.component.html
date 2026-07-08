@@ -1,0 +1,66 @@
+<div class="page-header" *ngIf="evenement">
+  <div class="container">
+    <p class="breadcrumb">
+      <a routerLink="/evenement">Évènements</a> &gt; Détails
+    </p>
+    <h1>{{ evenement.titre }}</h1>
+  </div>
+</div>
+
+<div class="container detail-container" *ngIf="evenement">
+  <div class="detail-layout">
+    <div class="detail-main">
+      <div class="detail-image-wrapper">
+        <img [src]="evenement.imageUrl" [alt]="evenement.titre" class="detail-image" />
+      </div>
+      
+      <div class="detail-content">
+        <h2>À propos de l'événement</h2>
+        <p class="lead-text">{{ evenement.description }}</p>
+        <p>Rejoignez les leaders du secteur pour découvrir les dernières innovations et technologies. Cet événement est une opportunité unique de développer votre réseau professionnel et de participer à des conférences animées par des experts reconnus.</p>
+        <p>Au programme : des expositions interactives, des ateliers pratiques, et des sessions de networking exclusives conçues pour vous offrir une expérience enrichissante et inspirante.</p>
+      </div>
+    </div>
+    
+    <div class="detail-sidebar">
+      <div class="info-card">
+        <h3>Informations Pratiques</h3>
+        <div class="info-item">
+          <span class="info-icon">📅</span>
+          <div class="info-text">
+            <strong>Date</strong>
+            <span>{{ evenement.date }}</span>
+          </div>
+        </div>
+        <div class="info-item">
+          <span class="info-icon">📍</span>
+          <div class="info-text">
+            <strong>Lieu</strong>
+            <span>{{ evenement.lieu }}</span>
+          </div>
+        </div>
+        
+        <button class="btn-primary full-width">S'inscrire maintenant</button>
+      </div>
+      
+      <a routerLink="/evenement" class="btn-secondary full-width mt-15">← Retour à la liste</a>
+    </div>
+  </div>
+</div>
+
+<!-- Cas où l'événement n'existe pas -->
+<div class="page-header" *ngIf="!evenement">
+  <div class="container">
+    <p class="breadcrumb"><a routerLink="/evenement">Évènements</a> &gt; Erreur</p>
+    <h1>Événement introuvable</h1>
+  </div>
+</div>
+
+<div class="container not-found-container" *ngIf="!evenement">
+  <div class="error-content">
+    <div class="icon-error">🔍</div>
+    <h2>Oups ! Cet événement n'existe pas.</h2>
+    <p>Nous ne parvenons pas à trouver les détails de l'événement demandé.</p>
+    <a routerLink="/evenement" class="btn-secondary">← Retour aux événements</a>
+  </div>
+</div>

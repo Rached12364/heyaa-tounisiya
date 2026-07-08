@@ -1,0 +1,43 @@
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb">Accueil > Juridique / الشؤون القانونية</p>
+    <h1>Juridique & Règlement / الشؤون القانونية والنظام الداخلي</h1>
+    <p>Retrouvez ici le règlement intérieur et les statuts de la coopérative.</p>
+  </div>
+</div>
+
+<div class="container juridique-container">
+  
+  <div class="rtl-wrapper" dir="rtl">
+    <div class="accordion-header-main">
+      <h2>النظام الداخلي وقانون التعاونية</h2>
+      <p class="lead-text">المبادئ الأساسية والقواعد المنظمة للعمل المشترك والتعاون</p>
+    </div>
+
+    <div class="accordion-list">
+      <div class="accordion-item" *ngFor="let section of sections" [class.open]="section.isOpen">
+        
+        <button class="accordion-button" (click)="toggleSection(section)">
+          <div class="accordion-title">
+            <span class="ar-title">{{ section.titleAr }}</span>
+            <span class="fr-title">({{ section.titleFr }})</span>
+          </div>
+          <span class="accordion-icon">{{ section.isOpen ? '−' : '+' }}</span>
+        </button>
+        
+        <div class="accordion-content-wrapper" [style.max-height]="section.isOpen ? '1000px' : '0'">
+          <div class="accordion-content">
+            <ul>
+              <li *ngFor="let item of section.contentAr" 
+                  [class.sub-item]="item.startsWith('-')">
+                {{ item.startsWith('-') ? item.substring(1).trim() : item }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+</div>

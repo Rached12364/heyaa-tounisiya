@@ -1,0 +1,241 @@
+// === Variables (Matching existing design) ===
+$navy: #1B3A5C;
+$gold: #C9A227;
+$red: #E70013;
+
+// === Page Header ===
+.page-header {
+  background: $navy;
+  color: white;
+  padding: 100px 0 40px;
+  text-align: center;
+
+  h1 {
+    font-size: 36px;
+    margin: 10px 0;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    color: $gold;
+    opacity: 1;
+
+    a {
+      color: $gold;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// === Container ===
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// === Detail Layout ===
+.detail-container {
+  margin: 50px auto;
+}
+
+.detail-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+// === Main Content ===
+.detail-main {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+}
+
+.detail-image-wrapper {
+  width: 100%;
+  height: 400px;
+  
+  .detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.detail-content {
+  padding: 40px;
+
+  h2 {
+    color: $navy;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  .lead-text {
+    font-size: 18px;
+    color: #444;
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 25px;
+  }
+
+  p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 15px;
+  }
+}
+
+// === Sidebar ===
+.info-card {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+
+  h3 {
+    color: $navy;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba($gold, 0.2);
+  }
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+
+  .info-icon {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .info-text {
+    display: flex;
+    flex-direction: column;
+    
+    strong {
+      color: $navy;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    span {
+      color: #555;
+      font-size: 16px;
+    }
+  }
+}
+
+// === Buttons ===
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  text-align: center;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background: $red;
+  color: white;
+
+  &:hover {
+    background: darken($red, 10%);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: $navy;
+  border: 2px solid $navy;
+
+  &:hover {
+    background: $navy;
+    color: white;
+  }
+}
+
+.full-width {
+  width: 100%;
+  display: block;
+}
+
+.mt-15 {
+  margin-top: 15px;
+}
+
+// === Not Found State ===
+.not-found-container {
+  margin: 80px auto;
+  text-align: center;
+}
+
+.error-content {
+  background: white;
+  padding: 60px 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto;
+
+  .icon-error {
+    font-size: 64px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: $navy;
+    margin-bottom: 15px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 30px;
+  }
+}
+
+// === Responsive ===
+@media (max-width: 992px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 80px 0 30px;
+    h1 {
+      font-size: 28px;
+    }
+  }
+
+  .detail-image-wrapper {
+    height: 250px;
+  }
+
+  .detail-content {
+    padding: 25px;
+  }
+}

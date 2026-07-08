@@ -4,7 +4,10 @@ import com.heyaatounisiya.backend.dto.TechnicienFicheRHResponse;
 import com.heyaatounisiya.backend.service.TechnicienFicheRHService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 import java.util.List;
 /**
  * Fiche RH interne du technicien.
@@ -24,11 +27,14 @@ public class TechnicienFicheRHController {
     public ResponseEntity<TechnicienFicheRHResponse> getByUserId(@PathVariable Long userId) {
         return ResponseEntity.ok(ficheRHService.getByUserId(userId));
     }
-    @PutMapping("/{userId}")
+    @PutMapping(value = "/{userId}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<TechnicienFicheRHResponse> saveOrUpdate(
             @PathVariable Long userId,
-            @RequestBody TechnicienFicheRHRequest data
-    ) {
-        return ResponseEntity.ok(ficheRHService.saveOrUpdate(userId, data));
+            @RequestPart("data") TechnicienFicheRHRequest data,
+            @RequestPart(value = "extraitNaissanceDocument", required = false) MultipartFile extraitNaissanceDocument,
+            @RequestPart(value = "permisDocument", required = false) MultipartFile permisDocument,
+            @RequestPart(value = "signatureDocument", required = false) MultipartFile signatureDocument
+    ) throws IOException {
+        return ResponseEntity.ok(ficheRHService.saveOrUpdate(userId, data, extraitNaissanceDocument, permisDocument, signatureDocument));
     }
 }

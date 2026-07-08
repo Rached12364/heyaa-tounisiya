@@ -1,0 +1,27 @@
+<div class="page-header">
+  <div class="container">
+    <p class="breadcrumb">Accueil > Évènements</p>
+    <h1>Évènements</h1>
+    <p>Retrouvez ici tous les événements, salons et manifestations auxquels
+      Heyaa Tounisiya a participé ou organisé.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="evenements-grid">
+    <div class="evenement-card" *ngFor="let evt of evenements">
+      <div class="card-image">
+        <img [src]="evt.imageUrl" [alt]="evt.titre" loading="lazy" />
+        <div class="card-date">
+          <span>📅 {{ evt.date }}</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <h3 class="card-titre">{{ evt.titre }}</h3>
+        <p class="card-lieu">📍 {{ evt.lieu }}</p>
+        <p class="card-description">{{ evt.description }}</p>
+        <a [routerLink]="['/evenement', evt.id]" class="btn-evenement">Voir l'événement</a>
+      </div>
+    </div>
+  </div>
+</div>

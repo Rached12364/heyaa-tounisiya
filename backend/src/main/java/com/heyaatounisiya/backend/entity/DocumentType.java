@@ -6,5 +6,8 @@ public enum DocumentType {
     DIPLOME,
     ATTESTATION,
     PHOTO,
-    CASIER
+    CASIER,
+    EXTRAIT_NAISSANCE,
+    PERMIS,
+    SIGNATURE
 }

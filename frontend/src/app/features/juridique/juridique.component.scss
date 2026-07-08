@@ -1,0 +1,210 @@
+// === Variables ===
+$navy: #1B3A5C;
+$gold: #C9A227;
+$red: #E70013;
+$bg-light: #f8fafc;
+
+// === Page Header ===
+.page-header {
+  background: $navy;
+  color: white;
+  padding: 100px 0 40px;
+  text-align: center;
+
+  h1 {
+    font-size: 36px;
+    margin: 10px 0;
+  }
+
+  p {
+    opacity: 0.8;
+  }
+
+  .breadcrumb {
+    font-size: 13px;
+    color: $gold;
+  }
+}
+
+// === Container ===
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.juridique-container {
+  margin: 60px auto 80px;
+}
+
+// === RTL Wrapper ===
+.rtl-wrapper {
+  text-align: right;
+  font-family: 'Tajawal', 'Cairo', 'Segoe UI', sans-serif; // Good Arabic fonts if available, fallbacks otherwise
+}
+
+.accordion-header-main {
+  text-align: center;
+  margin-bottom: 40px;
+
+  h2 {
+    color: $navy;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+
+  .lead-text {
+    color: #666;
+    font-size: 18px;
+  }
+}
+
+// === Accordion List ===
+.accordion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.accordion-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+  &.open {
+    border-color: rgba($gold, 0.5);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+
+    .accordion-button {
+      background: $bg-light;
+      border-bottom: 1px solid #eee;
+    }
+
+    .accordion-title {
+      .ar-title {
+        color: $red;
+      }
+    }
+  }
+}
+
+.accordion-button {
+  width: 100%;
+  text-align: right; // RTL
+  background: white;
+  border: none;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: $bg-light;
+  }
+}
+
+.accordion-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .ar-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $navy;
+    transition: color 0.3s ease;
+  }
+
+  .fr-title {
+    font-size: 16px;
+    color: #888;
+    font-weight: normal;
+  }
+}
+
+.accordion-icon {
+  font-size: 28px;
+  color: $gold;
+  font-weight: 300;
+  width: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+// === Accordion Content ===
+.accordion-content-wrapper {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.accordion-content {
+  padding: 24px;
+  background: white;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      position: relative;
+      padding-right: 20px; // RTL bullet spacing
+      margin-bottom: 12px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: #444;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        right: 0;
+        top: 0;
+        color: $gold;
+        font-size: 20px;
+        line-height: 1.5;
+      }
+
+      &.sub-item {
+        padding-right: 40px;
+        color: #666;
+        font-size: 16px;
+
+        &::before {
+          content: "-";
+          right: 20px;
+          color: #999;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// === Responsive ===
+@media (max-width: 768px) {
+  .accordion-button {
+    padding: 20px;
+  }
+
+  .accordion-title {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+
+    .ar-title {
+      font-size: 18px;
+    }
+    
+    .fr-title {
+      font-size: 14px;
+    }
+  }
+}

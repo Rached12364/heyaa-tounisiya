@@ -2,10 +2,35 @@
   <div class="container">
     <p class="breadcrumb">Accueil > Techniciens</p>
     <h1>Nos Techniciens</h1>
-    <p>Trouvez un technicien certifie pres de chez vous</p>
+    <p>Trouvez un technicien certifié près de chez vous</p>
   </div>
 </div>
+
+<!-- Tab navigation - only shows tabs if the user is a connected technicien -->
 <div class="container">
+  <div class="tabs-bar" *ngIf="isTechnicien">
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'liste'"
+      (click)="switchTab('liste')"
+    >
+      <span class="tab-icon">👥</span>
+      Nos Techniciens
+    </button>
+    <button
+      class="tab-btn"
+      [class.active]="activeTab === 'profil'"
+      (click)="switchTab('profil')"
+    >
+      <span class="tab-icon">👤</span>
+      Mon Profil
+    </button>
+    <div class="tab-indicator" [class.right]="activeTab === 'profil'"></div>
+  </div>
+</div>
+
+<!-- ===== ONGLET 1 : LISTE PUBLIQUE ===== -->
+<div class="container" *ngIf="activeTab === 'liste'">
   <div class="filter-bar">
     <input type="text" [(ngModel)]="searchTerm"
       placeholder="Rechercher un technicien...">
@@ -14,22 +39,29 @@
       <option *ngFor="let g of gouvernorats" [value]="g">{{g}}</option>
     </select>
     <select [(ngModel)]="selectedSpecialite">
-      <option value="">Toutes les specialites</option>
+      <option value="">Toutes les spécialités</option>
       <option *ngFor="let s of specialites" [value]="s">{{s}}</option>
     </select>
     <button class="btn-search">Rechercher</button>
   </div>
-  <p *ngIf="loading">Chargement des techniciens...</p>
-  <p *ngIf="!loading && errorMessage" class="non-verifie">{{errorMessage}}</p>
-  <p *ngIf="!loading && !errorMessage && techniciens.length === 0">Aucun technicien trouve.</p>
+
+  <p *ngIf="loading" class="status-message">Chargement des techniciens...</p>
+  <p *ngIf="!loading && errorMessage" class="status-message error">{{errorMessage}}</p>
+  <p *ngIf="!loading && !errorMessage && techniciens.length === 0" class="status-message empty">Aucun technicien trouvé.</p>
+
   <div class="techniciens-grid" *ngIf="!loading && !errorMessage">
     <div class="technicien-card" *ngFor="let t of techniciens">
       <div class="avatar" [style.background]="t.couleur">{{t.initiales}}</div>
       <h3>{{t.nomComplet}}</h3>
       <span class="badge" [style.background]="t.couleur">{{t.specialite}}</span>
       <p>📍 {{t.gouvernorat}}</p>
-      <p>⭐ {{t.experience}} ans experience</p>
+      <p>⭐ {{t.experience}} ans d'expérience</p>
       <button class="btn-profil">Voir le profil</button>
     </div>
   </div>
+</div>
+
+<!-- ===== ONGLET 2 : MON PROFIL (technicien connecté uniquement) ===== -->
+<div *ngIf="activeTab === 'profil' && isTechnicien">
+  <app-technicien-profil></app-technicien-profil>
 </div>

@@ -7,6 +7,9 @@ import com.heyaatounisiya.backend.repository.TechnicienFicheRHRepository;
 import com.heyaatounisiya.backend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import com.heyaatounisiya.backend.entity.DocumentType;
+import org.springframework.web.multipart.MultipartFile;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,6 +18,8 @@ import java.util.NoSuchElementException;
 public class TechnicienFicheRHService {
     private final TechnicienFicheRHRepository ficheRHRepository;
     private final UserRepository userRepository;
+    private final FileStorageService fileStorageService;
+
     public TechnicienFicheRHResponse getByUserId(Long userId) {
         TechnicienFicheRH fiche = ficheRHRepository.findByUserId(userId)
                 .orElseThrow(() -> new NoSuchElementException("Fiche RH introuvable pour cet utilisateur"));
@@ -23,7 +28,13 @@ public class TechnicienFicheRHService {
     public List<TechnicienFicheRHResponse> getAll() {
         return ficheRHRepository.findAll().stream().map(this::toResponse).toList();
     }
-    public TechnicienFicheRHResponse saveOrUpdate(Long userId, TechnicienFicheRHRequest data) {
+    public TechnicienFicheRHResponse saveOrUpdate(
+            Long userId, 
+            TechnicienFicheRHRequest data,
+            MultipartFile extraitNaissanceDocument,
+            MultipartFile permisDocument,
+            MultipartFile signatureDocument
+    ) throws IOException {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new NoSuchElementException("Utilisateur introuvable"));
         TechnicienFicheRH fiche = ficheRHRepository.findByUser(user)
@@ -57,6 +68,20 @@ public class TechnicienFicheRHService {
         fiche.setEnceinte(data.enceinte());
         fiche.setTatouage(data.tatouage());
         fiche.setObservationsRh(data.observationsRh());
+
+        if (extraitNaissanceDocument != null && !extraitNaissanceDocument.isEmpty()) {
+            String path = fileStorageService.storeFile(user.getId(), DocumentType.EXTRAIT_NAISSANCE, extraitNaissanceDocument);
+            fiche.setExtraitNaissanceDocumentPath(path);
+        }
+        if (permisDocument != null && !permisDocument.isEmpty()) {
+            String path = fileStorageService.storeFile(user.getId(), DocumentType.PERMIS, permisDocument);
+            fiche.setPermisDocumentPath(path);
+        }
+        if (signatureDocument != null && !signatureDocument.isEmpty()) {
+            String path = fileStorageService.storeFile(user.getId(), DocumentType.SIGNATURE, signatureDocument);
+            fiche.setSignatureDocumentPath(path);
+        }
+
         TechnicienFicheRH saved = ficheRHRepository.save(fiche);
         return toResponse(saved);
     }
