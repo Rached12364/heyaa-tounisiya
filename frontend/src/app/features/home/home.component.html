@@ -26,38 +26,65 @@
   </div>
   <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
 </section>
-<section class="stats-section">
-  <div class="stats-card" #statsCard>
-    <div class="stat-block" *ngFor="let stat of stats">
-      <div class="stat-block__value">{{ stat.display }}<span class="stat-block__suffix">{{ stat.suffix }}</span></div>
-      <div class="stat-block__label">{{ stat.label }}</div>
+
+<section class="about-section">
+  <div class="about-content" dir="rtl">
+    <p class="section-eyebrow">من نحن</p>
+    <h2>ما هي التعاونية التونسية للتقنيين؟</h2>
+    <p class="about-text">التعاونية التونسية للتقنيين هي منصة رسمية تجمع نخبة من التقنيين المعتمدين في مجالات الكهرباء والطاقات المتجددة والألياف البصرية، بهدف تسهيل التواصل بين المهنيين المؤهلين والشركات والأفراد، وضمان جودة الخدمات التقنية في جميع أنحاء تونس.</p>
+  </div>
+  <div class="about-video">
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/HQdZgEL2Xbs"
+        title="Vidéo explicative"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
     </div>
   </div>
 </section>
-<section class="services-section">
-  <p class="section-eyebrow">Notre expertise</p>
-  <h2>Nos Services</h2>
-  <div class="cards-grid">
-    <article
-      class="service-card"
-      [ngClass]="card.color"
-      *ngFor="let card of serviceCards; let i = index"
-      [style.transition-delay.ms]="i * 80"
-      #cardEl
-    >
-      <div class="service-card__icon">{{ card.icon }}</div>
-      <h3>{{ card.title }}</h3>
-      <p>{{ card.text }}</p>
-    </article>
+<section class="sponsors-section">
+  <p class="section-eyebrow">Ils nous font confiance</p>
+  <h2>Nos Sponsors</h2>
+  <div class="sponsors-columns">
+    <div class="sponsors-details">
+      <div class="sponsor-detail" *ngFor="let feature of somefFeatures">
+        <div class="sponsor-detail__icon">{{ feature.icon }}</div>
+        <div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.text }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="sponsors-images">
+      <div class="sponsor-logo" *ngFor="let sponsor of sponsors">
+        <img [src]="sponsor.logo" [alt]="sponsor.name" />
+      </div>
+    </div>
   </div>
 </section>
 <footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col footer-col--brand">
-      <img src="logo.png" alt="Logo" height="72" />
-      <strong>الهيئة التونسية للتقنيين</strong>
-      <p>Plateforme officielle des techniciens certifiés en électricité et énergies renouvelables en Tunisie</p>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand__logo">
+        <img src="/logo.png" alt="Logo" />
+      </div>
+      <div>
+        <strong>التعاونية التونسية للتقنيين</strong>
+        <p>Plateforme officielle des techniciens certifiés en électricité et énergies renouvelables en Tunisie</p>
+      </div>
     </div>
+    <div class="footer-socials">
+      <a href="#" aria-label="Facebook">FB</a>
+      <a href="#" aria-label="Instagram">IG</a>
+      <a href="#" aria-label="YouTube">YT</a>
+      <a href="#" aria-label="LinkedIn">IN</a>
+    </div>
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-grid">
     <div class="footer-col">
       <h4>Liens rapides</h4>
       <a href="#">Accueil</a>
@@ -78,18 +105,12 @@
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <p>📍 Avenue 2 Mars 1934, Nabeul 8000</p>
-      <p>✉️ contact@mondial-security.com</p>
-      <p>📞 (216) 54 555 277</p>
-      <div class="footer-socials">
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="YouTube">YT</a>
-        <a href="#" aria-label="LinkedIn">IN</a>
-      </div>
+      <p class="footer-contact-item">📍 Avenue 2 Mars 1934, Nabeul 8000</p>
+      <p class="footer-contact-item">✉️ contact@mondial-security.com</p>
+      <p class="footer-contact-item">📞 (216) 54 555 277</p>
     </div>
   </div>
   <div class="footer-bottom">
-    © 2026 الهيئة التونسية للتقنيين - Tous droits réservés | Développé avec ❤️ en Tunisie
+    © 2026 التعاونية التونسية للتقنيين - Tous droits réservés | Développé avec ❤️ en Tunisie
   </div>
 </footer>

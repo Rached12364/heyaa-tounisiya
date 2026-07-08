@@ -46,7 +46,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   readonly menuItems: MenuItem[] = [
     { fr: 'Accueil', ar: 'الرئيسية', en: 'Home' },
-    { fr: "L'Heyaa", ar: 'الهيئة', en: 'The Authority' },
+    { fr: "L'Heyaa", ar: 'التعاونية', en: 'The Authority' },
     { fr: 'Techniciens', ar: 'الفنيون', en: 'Technicians' },
     { fr: 'Entreprises', ar: 'الشركات', en: 'Companies' },
     { fr: 'Services', ar: 'الخدمات', en: 'Services' },
@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   readonly translations: Record<Lang, TranslationSet> = {
     fr: {
-      brand: 'الهيئة التونسية للتقنيين',
+      brand: 'التعاونية التونسية للتقنيين',
       brandSubtitle: 'Plateforme de techniciens certifiés',
       topAddress: 'Avenue 2 Mars 1934, Nabeul 8000',
       topEmail: 'contact@mondial-security.com',
@@ -76,7 +76,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       mobileMenuLabel: 'Menu principal'
     },
     ar: {
-      brand: 'الهيئة التونسية للتقنيين',
+      brand: 'التعاونية التونسية للتقنيين',
       brandSubtitle: 'منصة فنيين معتمدين',
       topAddress: 'شارع 2 مارس 1934، نابل 8000',
       topEmail: 'contact@mondial-security.com',

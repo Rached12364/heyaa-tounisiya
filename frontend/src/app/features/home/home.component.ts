@@ -261,7 +261,131 @@ interface ServiceCard {
       color: #5A6B80;
       font-weight: 500;
     }
-    .services-section {
+    .about-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    .about-content {
+      text-align: right;
+    }
+    .about-content h2 {
+      margin: 8px 0 16px;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #16283F;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .about-text {
+      margin: 0;
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #4A5A6E;
+    }
+    .about-video {
+      width: 100%;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(11, 32, 56, 0.18);
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .sponsors-section {
+      background: #F7F5EF;
+      padding: 80px 24px;
+    }
+    .sponsors-section h2 {
+      margin: 0 0 40px;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #16283F;
+      text-align: center;
+    }
+    .sponsors-columns {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sponsors-details {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sponsor-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .sponsor-detail__icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .sponsor-detail h3 {
+      margin: 0 0 4px;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: #16283F;
+    }
+    .sponsor-detail p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #5A6B80;
+    }
+    .sponsors-images {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .sponsor-logo {
+      width: 100%;
+      height: 150px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(11, 32, 56, 0.08);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .sponsor-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .sponsor-logo:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(11, 32, 56, 0.14);
+    }
+    @media (max-width: 900px) {
+      .sponsors-columns {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 900px) {
+      .about-section {
+        grid-template-columns: 1fr;
+      }
+      .about-content {
+        text-align: center;
+      }
+    }    .services-section {
       background: #F7F5EF;
       padding: 96px 24px 64px;
     }
@@ -332,11 +456,83 @@ interface ServiceCard {
     .site-footer {
       background: #0B2038;
       color: #fff;
-      padding: 60px 24px 20px;
+      padding: 56px 32px 24px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .footer-brand__logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .footer-brand__logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .footer-brand strong {
+      display: block;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .footer-brand p {
+      margin: 0;
+      color: #A9B4C4;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      max-width: 420px;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+    .footer-socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: #C9A227;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .footer-socials a:hover {
+      background: #C9A227;
+      color: #0B2038;
+    }
+    .footer-divider {
+      max-width: 1320px;
+      margin: 40px auto;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.12);
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 24px;
       max-width: 1320px;
       margin: 0 auto;
@@ -344,48 +540,47 @@ interface ServiceCard {
     .footer-col {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-    }
-    .footer-col strong,
-    .footer-col h4 {
-      color: #fff;
-      margin: 0 0 8px;
-      font-weight: 700;
+      gap: 10px;
     }
     .footer-col h4 {
       color: #C9A227;
+      margin: 0 0 6px;
+      font-weight: 700;
       font-size: 1rem;
     }
-    .footer-col p,
     .footer-col a {
       color: #E7EBF2;
       text-decoration: none;
       font-size: 0.95rem;
       line-height: 1.6;
-      margin: 0;
       transition: color 0.2s ease;
     }
     .footer-col a:hover { color: #C9A227; }
-    .footer-col--brand p {
-      color: #A9B4C4;
-      font-size: 0.9rem;
-    }
-    .footer-socials {
-      display: flex;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    .footer-socials a {
-      color: #C9A227;
-      font-weight: 700;
+    .footer-contact-item {
+      color: #E7EBF2;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
     }
     .footer-bottom {
-      margin-top: 28px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
       text-align: center;
       color: #A9B4C4;
       font-size: 13px;
+      max-width: 1320px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 700px) {
+      .footer-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 1100px) {
       .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -424,6 +619,19 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { icon: '⚡', title: 'Électricité', text: 'Électricité bâtiment et industrielle', color: 'gold' },
     { icon: '🔥', title: 'Détection Incendie', text: 'Systèmes anti-incendie certifiés', color: 'red' },
     { icon: '🏠', title: 'Smart Home', text: 'Domotique et automatisation', color: 'navy' }
+  ];
+  public sponsors: { name: string; logo: string }[] = [
+    { name: 'SOMEF', logo: 'https://www.somef.tn/img/cms/somef/lot-a/101/banner-1-.jpg' },
+    { name: 'Partenaire 2', logo: 'https://www.somef.tn/img/cms/somef/lot-a/102/banner-1-.jpg' },
+    { name: 'Partenaire 3', logo: 'https://www.somef.tn/img/cms/somef/interieur-min.jpg' }
+  ];
+  public somefFeatures: { icon: string; title: string; text: string }[] = [
+    { icon: '🏆', title: 'Expertise depuis 1988', text: "38 ans d'expérience dans les appareillages électriques" },
+    { icon: '✅', title: 'Qualité & Standards', text: 'Qualité tunisienne, standards internationaux' },
+    { icon: '💡', title: 'Innovation', text: 'Domotique, IoT et maison connectée' },
+    { icon: '🌍', title: 'Réseau de Distribution', text: 'Plus de 1000 revendeurs spécialisés, dont plus de 25 agréés, et 3 showrooms en Tunisie' },
+    { icon: '📜', title: 'Certifications', text: 'ISO 9001 - ISO 14001 - ISO 45001' },
+    { icon: '🤝', title: 'Partenariat AVE', text: 'Partenariat avec AVE Italie, leader depuis 1904' }
   ];
   public currentSlide = 0;
   private autoplayTimer: number | null = null;
