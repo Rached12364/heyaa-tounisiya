@@ -1,4 +1,4 @@
-﻿<div class="page-header">
+<div class="page-header">
   <div class="container">
     <p class="breadcrumb">Accueil > Techniciens</p>
     <h1>Nos Techniciens</h1>
@@ -19,15 +19,16 @@
     </select>
     <button class="btn-search">Rechercher</button>
   </div>
-  <div class="techniciens-grid">
+  <p *ngIf="loading">Chargement des techniciens...</p>
+  <p *ngIf="!loading && errorMessage" class="non-verifie">{{errorMessage}}</p>
+  <p *ngIf="!loading && !errorMessage && techniciens.length === 0">Aucun technicien trouve.</p>
+  <div class="techniciens-grid" *ngIf="!loading && !errorMessage">
     <div class="technicien-card" *ngFor="let t of techniciens">
       <div class="avatar" [style.background]="t.couleur">{{t.initiales}}</div>
-      <h3>{{t.nom}}</h3>
+      <h3>{{t.nomComplet}}</h3>
       <span class="badge" [style.background]="t.couleur">{{t.specialite}}</span>
       <p>📍 {{t.gouvernorat}}</p>
       <p>⭐ {{t.experience}} ans experience</p>
-      <p *ngIf="t.verifie" class="verifie">✅ Technicien verifie</p>
-      <p *ngIf="!t.verifie" class="non-verifie">⏳ En cours de verification</p>
       <button class="btn-profil">Voir le profil</button>
     </div>
   </div>
